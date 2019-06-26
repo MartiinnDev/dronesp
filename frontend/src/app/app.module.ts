@@ -17,9 +17,11 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { PrivateComponent } from './private/private.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
-import { BlogPageComponent } from './blog-page/blog-page.component';
+import { forumPageComponent } from './forum-page/forum-page.component';
 import { RoleGuard } from './_guards/role.guard';
 import { CommentService } from './_services/comment_service';
+import { MentionPipe } from './_pipes/mention.pipe';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
     imports: [
@@ -39,7 +41,9 @@ import { CommentService } from './_services/comment_service';
         PrivateComponent,
         HomePageComponent,
         ProfilePageComponent,
-        BlogPageComponent
+        forumPageComponent,
+        MentionPipe,
+        FooterComponent
     ],
     providers: [
         AuthGuard,

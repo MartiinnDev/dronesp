@@ -1,6 +1,6 @@
 <div style="margin-top: 40px;" class="container">
   <div class="col-sm-8 offset-sm-2">
-    <h3>Forum</h3>
+    <h3>Foro</h3>
     <br>
     <div class="comment-wrapper">
       <div class="panel panel-info">
@@ -15,20 +15,21 @@
                     <small class="text-muted">{{ comment.createdDate | date}}</small>
                 </span>
                 <strong class="text-success">@{{ comment.commentBy }}</strong>
-                <h6>{{ comment.title }}</h6>
+                <br>
+                <strong>{{ comment.title }}</strong>
                 <p>
-                    {{ comment.content }}.
+                  {{ comment.content }}.
                 </p>
               </div>
               <button *ngIf="identity?.userRole === 'admin'" (click)="deleteComment(comment._id)"[disabled]="!identity" class="btn btn-sm btn-error pull-right">X</button>
             </li>
           </ul>
-            <h4>Post a Comment</h4>
+            <h4>Añade un comentario</h4>
             <div style="display: flex;" *ngIf="!identity">
-                <strong>You need to be logged</strong> 
+                <strong>Necesitas ser usuario para comentar</strong> 
                 <div style="margin-left: 10px;" class="buttons-container">
-                  <a [routerLink]="['/login']" class="btn btn-sm btn-info">Log In</a>
-                  <a [routerLink]="['/register']" style="margin-left: 10px;" class="btn btn-sm btn-info">Register</a>
+                  <a [routerLink]="['/login']" class="btn btn-sm btn-info">Entrar</a>
+                  <a [routerLink]="['/register']" style="margin-left: 10px;" class="btn btn-sm btn-info">Registrarse</a>
                 </div>
             </div>
             <form *ngIf="identity" [formGroup]="commentForm" (ngSubmit)="onSubmit()">
@@ -37,7 +38,8 @@
                 <input type="text" formControlName="title" class="form-control" name="title" placeholder="Title of comment...">
               </div>
               <div class="form-group">
-                <textarea formControlName="content" class="form-control" style="margin-top: 10px" name="content" placeholder="write a comment..." rows="3"></textarea>
+                <textarea formControlName="content" class="form-control" style="margin-top: 10px" name="content" placeholder="write a comment..." rows="3" maxlength="140"></textarea>
+                <span class="help-block"><p id="characterLeft" class="help-block ">No te pases de chapas</p></span>
               </div>
               <div class="form-group">
                 <button [disabled]="loading" class="btn btn-info pull-right">Post</button>

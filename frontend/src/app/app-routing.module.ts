@@ -6,14 +6,14 @@ import { AuthGuard } from './_guards';
 import { PrivateComponent } from './private/private.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
-import { BlogPageComponent } from './blog-page/blog-page.component';
+import { forumPageComponent } from './forum-page/forum-page.component';
 import { RoleGuard } from './_guards/role.guard';
 
 const appRoutes: Routes = [
     { path: '', component: HomePageComponent},
     { path: 'private-area', component: PrivateComponent, canActivate: [AuthGuard, RoleGuard] },
     { path: 'profile', component: ProfilePageComponent, canActivate: [AuthGuard] },
-    { path: 'blog', component: BlogPageComponent },
+    { path: 'forum', component: forumPageComponent },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
 

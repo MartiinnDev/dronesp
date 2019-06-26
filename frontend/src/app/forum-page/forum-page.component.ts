@@ -5,11 +5,11 @@ import { AlertService, UserService } from '../_services';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-blog-page',
-  templateUrl: './blog-page.component.html',
-  styleUrls: ['./blog-page.component.scss']
+  selector: 'app-forum-page',
+  templateUrl: './forum-page.component.html',
+  styleUrls: ['./forum-page.component.scss']
 })
-export class BlogPageComponent implements OnInit {
+export class forumPageComponent implements OnInit {
 
   comments: Comment[] = [];
   loading = false;

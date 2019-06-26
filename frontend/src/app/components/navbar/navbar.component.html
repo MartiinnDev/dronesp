@@ -1,69 +1,75 @@
-
-<nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" [routerLink]="['/home']">DRONESP</a>
-  <div class="nav-item d-lg-none" style="margin-left: auto; display: flex;">
-    <div class="nav-item" *ngIf="currentUser?.username">
-      <a class="nav-link" [routerLink]="['/profile']">
-        <i class="fa fa-user"></i>
-        {{ currentUser?.username | titlecase }}
-      </a>
-    </div>
-    <a *ngIf="currentUser" class="nav-link" (click)="_authService.logout()" [routerLink]="['/login']">
-      <i class="fa fa-sign-out"></i>
-      <small> Sign Out </small>
-    </a>
-    <a *ngIf="!currentUser" class="nav-link" [routerLink]="['/login']">
-      <i class="fa fa-sign-in"></i>
-      <small> Sign In </small>
-    </a>
-  </div>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" (click)="toggleMenu()" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div style="display: none" class="navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/home']">
-          <i class="fa fa-home"></i>
-          Home
-          <span class="sr-only">(current)</span>
-          </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/blog']">
-          <i class="fa fa-pencil"></i>
-          BLOG
-        </a>
-      </li>
-    </ul>
-    <ul *ngIf="currentUser?.username" class="navbar-nav ml-auto">
-      <li class="nav-item d-none d-lg-block">
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" [routerLink]="['/home']">DRON<span style="color: #c60b1e">E</span><span style="color: #ffc400">S</span><span style="color: #c60b1e">P</span></a>
+    <div class="nav-item d-lg-none" style="margin-left: auto; display: flex;">
+      <div class="nav-item" *ngIf="currentUser?.username">
         <a class="nav-link" [routerLink]="['/profile']">
           <i class="fa fa-user"></i>
-          {{ currentUser?.username | uppercase }}
+          {{ currentUser?.username | titlecase }}
         </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" [routerLink]="['/profile/notifications']">
-          <i class="fa fa-bell">
-            <span class="badge badge-info">0</span>
-          </i>
-          <small> Notify </small>
-        </a>
-      </li>
-       <li *ngIf="currentUser?.userRole === 'admin'" class="nav-item">
-        <a class="nav-link" [routerLink]="['/private-area']">
-          <i class="fa fa-binoculars"></i>
-          ADMIN
-        </a>
-      </li>
-    </ul>
-    <!-- <form style="margin-left: 20px" class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2 ml-auto my-xs-0" type="text" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form> -->
-    <div class="nav-item d-none d-lg-block">
+      </div>
+      <a *ngIf="currentUser" class="nav-link" (click)="_authService.logout()" [routerLink]="['/login']">
+        <i class="fa fa-sign-out"></i>
+        <small> Sign Out </small>
+      </a>
+      <a *ngIf="!currentUser" class="nav-link" [routerLink]="['/login']">
+        <i class="fa fa-sign-in"></i>
+        <small> Sign In </small>
+      </a>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li>
+          <a class="nav-link" [routerLink]="['/home']">
+            <i class="fa fa-home"></i>
+            Home
+            <span class="sr-only">(current)</span>
+          </a>
+        </li> 
+        <li>
+          <a class="nav-link" [routerLink]="['/about']">
+            <i class="fa fa-question"></i>
+            About
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/forum']">
+            <i class="fa fa-pencil"></i>
+            Forum
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/contact']">
+            <i class="fa fa-envelope"></i>
+            Contact
+          </a>
+        </li>
+      </ul>
+      <ul *ngIf="currentUser?.username" class="navbar-nav ml-auto">
+        <li class="nav-item d-none d-lg-block">
+          <a class="nav-link" [routerLink]="['/profile']">
+            <i class="fa fa-user"></i>
+            {{ currentUser?.username | titlecase }}
+          </a>
+        </li>
+          <!-- <a class="nav-link disabled" [routerLink]="['/profile/notifications']" disabled>
+            <i class="fa fa-bell">
+              <span style="width: 15px; height: 15px; font-size: 11px;" class="badge badge-success">0</span>
+            </i>
+          </a> -->
+         <li *ngIf="currentUser?.userRole === 'admin'" class="nav-item">
+          <a class="nav-link" [routerLink]="['/private-area']">
+            <i class="fa fa-binoculars"></i>
+            ADMIN
+          </a>
+        </li>
+      </ul>
+      <div class="nav-item d-none d-lg-block">
         <a *ngIf="currentUser" class="nav-link" (click)="logout()" [routerLink]="['/login']">
           <i class="fa fa-sign-out"></i>
           <small> Sign Out </small>
@@ -72,6 +78,7 @@
           <i class="fa fa-sign-in"></i>
           <small> Sign In </small>
         </a>
+    </div>
     </div>
   </div>
 </nav>
