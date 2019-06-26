@@ -41,3 +41,23 @@ transition: opacity ease-in-out .5s;
     transition: opacity ease-in .5s;
   }
 }
+
+@media (max-width: 768px) {
+  .jumbotron{
+    &::after{
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      position: absolute;
+      z-index: -1; 
+      background: url('../../assets/img/jumb_1.jpg');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      opacity: .8;
+    }
+  }
+}
