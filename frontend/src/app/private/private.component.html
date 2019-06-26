@@ -1,17 +1,40 @@
 
 <div class="container">
-    <div class="row">
-        <div class="col-sm-8 offset-sm-2">
-            <h1>Hi {{currentUser.firstName}}! <i> {{ currentUser.userRole }}</i></h1>
-            <h3>All registered users:</h3>
-            <ul>
-                <li *ngFor="let user of users">
-                    {{user.username}} ({{user.firstName}} {{user.lastName}}) ( {{ user.userRole }})
-                    - <button class="btn btn-danger btn-sm" *ngIf="currentUser.userRole === 'admin'" (click)="deleteUser(user.id)">Delete</button>
-                    - <button class="btn btn-warning btn-sm" *ngIf="currentUser.userRole === 'admin'" (click)="toggleUserRole(user)">Rol</button>
-                </li>
-            </ul>
-            <p><button class="btn btn-info" (click)="logout()">Log Out</button></p>
-        </div>
-    </div>
+	<div class="col-sm-8 offset-sm-2">
+		<div style="display: flex; flex-direction: column">
+			<h1>Hi {{currentUser.firstName}}! <i> {{ currentUser.userRole }}</i></h1>
+			<h3>All registered users:</h3>
+			<div class="table-responsive">
+				<table class="table table-hover">
+					<thead class="thead-dark">
+						<tr>
+							<th>Username</th>
+							<th>Firstname</th>
+							<th>LastName</th>
+							<th>Email</th>
+							<th>Role</th>
+							<th *ngIf="currentUser.userRole === 'admin'"><i>Actions</i></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let user of users">
+							<td>{{ user.username }}</td>
+							<td>{{ user.firstName }}</td>
+							<td>{{ user.lastName }}</td>
+							<td></td>
+							<td>{{ user.userRole }}</td>
+							<td *ngIf="currentUser.userRole === 'admin'">
+								<button class="btn btn-danger btn-sm" (click)="deleteUser(user.id)">Delete</button> -
+								<button class="btn btn-warning btn-sm" (click)="toggleUserRole(user)">Rol</button> 
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<p style="text-align: center">
+				<br>
+				<button class="btn btn-sm btn-info" (click)="logout()">Log Out</button>
+			</p>
+		</div>
+	</div>
 </div>
