@@ -71,7 +71,8 @@ export class forumPageComponent implements OnInit {
   }
 
   deleteComment(comment){
-    this._commentService.delete(comment)
+    if(confirm("Estas seguro de eliminar este comentario?")){
+      this._commentService.delete(comment)
           .subscribe(
             data => {
                 this.loading = false;
@@ -81,6 +82,10 @@ export class forumPageComponent implements OnInit {
                 this.alertService.error(error);
                 this.loading = false;
             });
+    }
+    else{
+
+    }
   }
 
 

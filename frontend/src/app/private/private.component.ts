@@ -26,9 +26,14 @@ export class PrivateComponent implements OnInit {
     }
 
     deleteUser(id: number) {
-        this.userService.delete(id).pipe(first()).subscribe(() => { 
-            this.loadAllUsers() 
-        });
+        if(confirm("Estas seguro de eliminar PERMANENTEMENTE este usuario?")){
+            this.userService.delete(id).pipe(first()).subscribe(() => { 
+                this.loadAllUsers() 
+            });
+        }
+        else{
+
+        }
     }
 
     toggleUserRole(user: User) {
