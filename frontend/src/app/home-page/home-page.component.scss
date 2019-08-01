@@ -1,6 +1,7 @@
 .jumbotron{
   position: relative;
   z-index: 2;
+  border-radius: .25rem;
   &::after{
     content: '';
     position: absolute;
@@ -15,6 +16,7 @@
     background-position: center center;
     background-repeat: no-repeat;
     opacity: .8;
+    border-radius: .25rem;
   }
 }
 
